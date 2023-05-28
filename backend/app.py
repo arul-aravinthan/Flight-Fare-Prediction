@@ -12,7 +12,7 @@ import json
 
 app = Flask(__name__)
 api = Api(app)
-CORS(app) 
+#CORS(app) 
 #Load pickled model and label encoders
 model = pickle.load(open('model.pkl', 'rb'))
 column_order = pickle.load(open('column_order.pkl', 'rb'))
@@ -27,7 +27,7 @@ api.add_resource(ApiHandler, '/api')
 
 @app.route('/predict')
 def predict():
-    data = requests.get('http://localhost:5000/api').json()
+    data = requests.get('https://flight-fare-prediction-flask-backend.vercel.app/api').json()
     data = json.loads(data)
 
     #Convert stops to categorical variable
