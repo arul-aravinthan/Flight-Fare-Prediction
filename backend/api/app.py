@@ -15,7 +15,7 @@ CORS(app)
 #Load pickled model and label encoders
 # model = dil.load(open('model.pkl', 'rb'))
 column_order = dill.load(open('/column_order.pkl', 'rb'))
-#ct = dill.load(open('ct.pkl', 'rb'))
+ct = dill.load(open('ct.pkl', 'rb'))
 
 @app.route("/", defaults={'path':''})
 @app.route("/<path:path>", methods = ['GET', 'POST'])
