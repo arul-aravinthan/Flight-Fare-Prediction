@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import axios from 'axios'
-import { useForm, Controller, set} from "react-hook-form";
+import { useForm, Controller} from "react-hook-form";
 import { Slider } from "@material-ui/core";
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createTheme } from '@material-ui/core/styles';
@@ -17,16 +17,9 @@ function App() {
 
   const onSubmit = (data) => {
     console.log(JSON.stringify(data))
-      axios.post('https://flight-fare-prediction-flask-backend.vercel.app/api', 
+      axios.post('http://127.0.0.1:5000/api', 
         JSON.stringify(data),
-      )
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      axios.get('https://flight-fare-prediction-flask-backend.vercel.app/predict').then(response => {
+      ).then(response => {
         setPrice(response.data['price'])
         console.log("SUCCESS", response)}
       ).catch(error => {  
