@@ -12,7 +12,7 @@ import json
 
 app = Flask(__name__)
 api = Api(app)
-#CORS(app) 
+CORS(app) 
 #Load pickled model and label encoders
 model = pickle.load(open('model.pkl', 'rb'))
 column_order = pickle.load(open('column_order.pkl', 'rb'))
