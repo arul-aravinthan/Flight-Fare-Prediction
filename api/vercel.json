@@ -17,7 +17,7 @@
         ]
       },
       {
-        "source": "https://flight-fare-prediction-react-frontend.vercel.app//(.*)",
+        "source": "https://flight-fare-prediction-react-frontend.vercel.app/(.*)",
         "headers": [
           { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
