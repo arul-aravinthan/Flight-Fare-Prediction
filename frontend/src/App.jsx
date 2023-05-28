@@ -17,7 +17,7 @@ function App() {
 
   const onSubmit = (data) => {
     console.log(JSON.stringify(data))
-      axios.post('http://127.0.0.1:5000/api', 
+      axios.post('https://flight-fare-prediction-flask-backend.vercel.app/api', 
         JSON.stringify(data),
       ).then(response => {
         setPrice(response.data['price'])
