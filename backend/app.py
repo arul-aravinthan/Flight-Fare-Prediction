@@ -10,7 +10,7 @@ from api_handler import ApiHandler
 import json
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='../frontend/build')
 api = Api(app)
 CORS(app) 
 #Load pickled model and label encoders
