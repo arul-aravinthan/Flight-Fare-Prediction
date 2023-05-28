@@ -4,7 +4,7 @@ from flask import Flask, jsonify
 import pickle
 from flask import Flask, send_from_directory
 from flask_restful import Api
-from flask_cors import CORS
+#from flask_cors import CORS
 import requests
 from api_handler import ApiHandler
 import json
@@ -12,7 +12,7 @@ import json
 
 app = Flask(__name__, static_url_path='', static_folder='../frontend/build')
 api = Api(app)
-CORS(app) 
+#CORS(app) 
 #Load pickled model and label encoders
 model = pickle.load(open('model.pkl', 'rb'))
 column_order = pickle.load(open('column_order.pkl', 'rb'))
