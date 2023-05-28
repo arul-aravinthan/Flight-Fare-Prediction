@@ -13,7 +13,7 @@ api = Api(app)
 CORS(app) 
 
 #Load pickled model and label encoders
-model = pickle.load(open('model.pkl', 'rb'))
+# model = pickle.load(open('model.pkl', 'rb'))
 column_order = pickle.load(open('column_order.pkl', 'rb'))
 ct = pickle.load(open('ct.pkl', 'rb'))
 
