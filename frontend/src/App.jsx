@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'
 import { useForm, Controller, set} from "react-hook-form";
 import { Slider } from "@material-ui/core";
@@ -12,9 +12,7 @@ function App() {
   const {
     register,
     handleSubmit,
-    watch,
     control,
-    formState: { errors }
   } = useForm();
 
   const onSubmit = (data) => {
@@ -28,15 +26,13 @@ function App() {
       .catch(function (error) {
         console.log(error);
       });
-      axios.get('http://localhost:5000/predict').then(response => {
+      axios.get('http://127.0.0.1:5000/predict').then(response => {
         setPrice(response.data['price'])
         console.log("SUCCESS", response)}
       ).catch(error => {  
         console.log(error)
       })
-  }; // your form submit function which will invoke after successful validation
-
-  console.log(watch("example")); // you can watch individual input by pass the name of the input
+  }; 
 
   const muiTheme = createTheme({
     overrides:{
@@ -210,7 +206,7 @@ function App() {
       <input type="submit" />
     </form>
     <div>
-      <h1>Price: {price}</h1>
+      <h1>Price: ₹{price.toFixed(2)}, or ${(price * 0.012).toFixed(2)} </h1>
     </div>
     </div>
   );
