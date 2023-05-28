@@ -5,8 +5,6 @@ import pickle
 from flask import Flask, send_from_directory
 from flask_restful import Api
 from flask_cors import CORS
-import requests
-from api_handler import ApiHandler
 import json
 
 
