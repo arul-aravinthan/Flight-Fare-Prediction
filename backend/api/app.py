@@ -14,8 +14,8 @@ CORS(app)
 
 #Load pickled model and label encoders
 # model = pickle.load(open('model.pkl', 'rb'))
-column_order = joblib.load(open('column_order.pkl'))
-ct = joblib.load('ct.pkl')
+column_order = joblib.load('column_order.pkl')
+#ct = joblib.load('ct.pkl')
 
 @app.route("/", defaults={'path':''})
 @app.route("/<path:path>", methods = ['GET', 'POST'])
