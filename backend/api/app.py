@@ -4,13 +4,13 @@ from flask import Flask, jsonify, request
 import pickle
 from flask import Flask
 from flask_restful import Api
-#from flask_cors import CORS
+from flask_cors import CORS
 import json
 
 
 app = Flask(__name__, static_url_path='', static_folder='../../frontend/build')
 api = Api(app)
-#CORS(app) 
+CORS(app) 
 
 #Load pickled model and label encoders
 model = pickle.load(open('model.pkl', 'rb'))
