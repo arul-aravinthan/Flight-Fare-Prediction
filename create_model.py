@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.metrics import r2_score
 import xgboost as xgb
 import pandas as pd
-import pickle
+import joblib
 from sklearn.compose import ColumnTransformer
 
 #Creating the model
@@ -21,11 +21,11 @@ y = df['price']
 y = y
 
 column_order = x.columns
-pickle.dump(column_order, open('column_order.pkl', 'wb'))
+joblib.dump(column_order, 'column_order.pkl')
 
 
 x = ct.fit_transform(x)
-pickle.dump(ct, open('ct.pkl', 'wb'))
+joblib.dump(ct, 'ct.pkl')
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
@@ -35,4 +35,4 @@ XGBR.fit(x_train, y_train)
 
 y_pred = XGBR.predict(x_test)
 
-pickle.dump(XGBR, open('model.pkl', 'wb'))
+joblib.dump(XGBR, 'model.pkl')

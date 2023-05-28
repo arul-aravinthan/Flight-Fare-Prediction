@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from flask import Flask, jsonify, request
-import pickle
+import joblib
 from flask import Flask
 from flask_restful import Api
 from flask_cors import CORS
@@ -14,8 +14,8 @@ CORS(app)
 
 #Load pickled model and label encoders
 # model = pickle.load(open('model.pkl', 'rb'))
-column_order = pickle.load(open('column_order.pkl', 'rb'))
-ct = pickle.load(open('ct.pkl', 'rb'))
+column_order = joblib.load(open('column_order.pkl'))
+ct = joblib.load('ct.pkl')
 
 @app.route("/", defaults={'path':''})
 @app.route("/<path:path>", methods = ['GET', 'POST'])
