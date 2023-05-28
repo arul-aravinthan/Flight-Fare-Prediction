@@ -8,7 +8,7 @@ from flask_restful import Api
 import json
 
 
-app = Flask(__name__, static_url_path='', static_folder='../frontend/build')
+app = Flask(__name__, static_url_path='', static_folder='../../frontend/build')
 api = Api(app)
 #CORS(app) 
 
