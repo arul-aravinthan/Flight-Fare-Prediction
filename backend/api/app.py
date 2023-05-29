@@ -14,7 +14,7 @@ CORS(app)
 try:
     #Load pickled model and label encoders
     # model = dil.load(open('model.pkl', 'rb'))
-    column_order = dill.load(open('/column_order.pkl', 'rb'))
+    column_order = dill.load(open('../data/column_order.pkl', 'rb'))
     #ct = dill.load(open('ct.pkl', 'rb'))
 except Exception as e: 
     print(e)
