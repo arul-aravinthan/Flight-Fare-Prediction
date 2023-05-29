@@ -17,7 +17,7 @@ function App() {
 
   const onSubmit = (data) => {
     console.log(JSON.stringify(data))
-      axios.post('https://flight-fare-prediction-ghz9w2z12-arul-aravinthan.vercel.app/api', 
+      axios.post('http://127.0.0.1:5000/api', 
         JSON.stringify(data),
       ).then(response => {
         setPrice(response.data['price'])
