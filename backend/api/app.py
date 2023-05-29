@@ -4,20 +4,18 @@ from flask import Flask, jsonify, request
 import dill
 from flask import Flask
 from flask_restful import Api
-from flask_cors import CORS
+#from flask_cors import CORS
 import json
 
 
 app = Flask(__name__)
 api = Api(app)
-CORS(app) 
-try:
-    #Load pickled model and label encoders
-    # model = dil.load(open('model.pkl', 'rb'))
-    column_order = dill.load(open('../data/column_order.pkl', 'rb'))
-    #ct = dill.load(open('ct.pkl', 'rb'))
-except Exception as e: 
-    print(e)
+#CORS(app) 
+#Load pickled model and label encoders
+# model = dil.load(open('model.pkl', 'rb'))
+column_order = dill.load(open('../data/column_order.pkl', 'rb'))
+#ct = dill.load(open('ct.pkl', 'rb'))
+
 @app.route("/", defaults={'path':''})
 @app.route("/<path:path>", methods = ['GET', 'POST'])
 def api(path):
