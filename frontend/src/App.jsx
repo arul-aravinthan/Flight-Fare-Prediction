@@ -2,16 +2,16 @@ import "./App.css";
 import React, { useState } from "react";
 import axios from "axios";
 import { useForm, Controller } from "react-hook-form";
-import { Slider } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/core/styles";
-import { createTheme } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { LinearProgress, Slider } from "@material-ui/core";
 
 function App() {
   const [price, setPrice] = useState(0);
-
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, control } = useForm();
 
   const onSubmit = (data) => {
+    setLoading(true);
     console.log(JSON.stringify(data));
     axios
       .post(
@@ -20,14 +20,21 @@ function App() {
       )
       .then((response) => {
         setPrice(response.data["price"]);
+        setLoading(false);
         console.log("SUCCESS", response);
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
   };
 
   const muiTheme = createTheme({
+    palette: {
+      secondary: {
+        main: "#FFC0CB",
+      },
+    },
     overrides: {
       MuiSlider: {
         root: {
@@ -197,6 +204,18 @@ function App() {
           )}
         />
         <input type="submit" />
+        <ThemeProvider theme={muiTheme}>
+          <LinearProgress
+            variant={loading ? "indeterminate" : "determinate"}
+            color="secondary"
+            style={{
+              height: "5px",
+              marginTop: "1em",
+              marginBottom: "-1em",
+              backgroundColor: "#e75480",
+            }}
+          />
+        </ThemeProvider>
       </form>
       <div>
         <h1>
